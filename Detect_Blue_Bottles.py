@@ -3,10 +3,6 @@ import numpy as np
 import os
 
 def readImage(path):
-    # for file in os.listdir(path):
-    #     if file.endswith(".png, .jpg, .jpeg, .bmp"):
-    #         path_img = os.path.join(path, file)
-    #         img = cv2.imread(path_img)
     img = cv2.imread(path)
     img = cv2.resize(img, (1279, 641))
     return img
@@ -27,7 +23,6 @@ def detectionBlueBottles():
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
     
     h, w = img.shape
-    # print(h, w)
 
     mindist = int(min(h, w) / 20)
     param1 = int(np.mean(canny) * 0.5) * 6.5
