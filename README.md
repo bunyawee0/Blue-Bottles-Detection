@@ -15,8 +15,8 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### RUN
-``` bash
+### Usage
+```bash
 python Detect_Blue_Bottles.py
 ```
 
