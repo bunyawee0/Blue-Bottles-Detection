@@ -4,7 +4,7 @@
 - Blue bottles detection with OpenCV
 - Count the blue bottles based on the circle at the mouth of the bottle.
 
-### Installation
+### INSTALLATION
 - Set environment variables
 ```bash
 python -m venv venv
@@ -15,7 +15,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Usage
+### USAGE
 ```bash
 python Detect_Blue_Bottles.py
 ```
