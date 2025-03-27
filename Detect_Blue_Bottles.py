@@ -55,7 +55,7 @@ def detectionBlueBottles(path):
 
     while True:
         cv2.putText(img_copy, "Total:"+ str(len(count_bottles)), (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-        cv2.imshow("IMG", img_copy)
+        cv2.imshow("Result", img_copy)
 
         if cv2.waitKey(0) & 0xFF == ord('q'):
             break
