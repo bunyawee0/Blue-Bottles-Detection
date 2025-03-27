@@ -19,6 +19,7 @@ pip install -r requirements.txt
 ```bash
 python Detect_Blue_Bottles.py
 ```
+Press "q" for Exit Windown
 
 ### SET PATH IMAGE 
 your_path : Set the path for your image
