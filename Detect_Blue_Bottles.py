@@ -7,7 +7,7 @@ def readImage(path):
     img = cv2.resize(img, (1279, 641))
     return img
 
-def detectionBlueBottles():
+def detectionBlueBottles(path):
     img = readImage(path)
     img_copy = img.copy()
 
@@ -42,23 +42,25 @@ def detectionBlueBottles():
                 cv2.circle(mask, (x ,y), r, (0, 255, 0), 2)
         
         blue_bottles = cv2.HoughCircles(mask, cv2.HOUGH_GRADIENT, 1, minDist= mindist, param1= param1, param2=param2, minRadius=minradius, maxRadius=maxradius)
-        blue_bottles = np.uint16(np.around(blue_bottles))
-        
-        for point in blue_bottles[0]:
-            x, y, r = point
-            cv2.circle(img_copy, (x ,y), r, (0, 255, 0), 2)
-
-        for count in blue_bottles[0]:
-            count_bottles.append(count)
+        if blue_bottles is not None:
+            blue_bottles = np.uint16(np.around(blue_bottles))
+            
+            for point in blue_bottles[0]:
+                x, y, r = point
+                cv2.circle(img_copy, (x ,y), r, (0, 255, 0), 2)
+                count_bottles.append(point)
+    
+        else:
+            print("No blue bottles detected")
 
     while True:
         cv2.putText(img_copy, "Total:"+ str(len(count_bottles)), (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
         cv2.imshow("IMG", img_copy)
 
-        if cv2.waitKey(0):
+        if cv2.waitKey(0) & 0xFF == ord('q'):
             break
 
-    cv2.destroyAllWindows()
+            cv2.destroyAllWindows()
 
     return count_bottles
 
@@ -66,4 +68,4 @@ def detectionBlueBottles():
 if __name__ == "__main__":
     path = 'Data_Bottles (1).png'
     # path = "Example_Test_Bottles (1).png"
-    detectionBlueBottles()
+    detectionBlueBottles(path)
